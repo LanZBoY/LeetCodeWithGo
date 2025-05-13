@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func lengthAfterTransformations(s string, t int) int {
+	const MOD = 1000000007
 	arr := [26]int{0}
 
 	for _, r := range s {
@@ -19,10 +20,10 @@ func lengthAfterTransformations(s string, t int) int {
 			v := arr[i]
 
 			if i < 25 {
-				temp_arr[i+1] = (temp_arr[i+1] + v) % 1000000007
+				temp_arr[i+1] = (temp_arr[i+1] + v) % MOD
 			} else {
-				temp_arr[0] = (temp_arr[0] + v) % 1000000007
-				temp_arr[1] = (temp_arr[1] + v) % 1000000007
+				temp_arr[0] = (temp_arr[0] + v) % MOD
+				temp_arr[1] = (temp_arr[1] + v) % MOD
 			}
 		}
 		arr = temp_arr
@@ -31,7 +32,7 @@ func lengthAfterTransformations(s string, t int) int {
 	sum := 0
 	for i := range 26 {
 
-		sum = (sum + arr[i]) % 1000000007
+		sum = (sum + arr[i]) % MOD
 	}
 	return sum
 }
